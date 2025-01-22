@@ -3,7 +3,7 @@ from app.models import NoteInput, Note
 from datetime import datetime
 import uuid
 
-client = OpenAI(api_key="")
+## client = OpenAI(api_key="")
 
 def generate_note_content(input_data: NoteInput, section=None) -> str:
     try:
