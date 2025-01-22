@@ -1,79 +1,60 @@
-# Alpaca Health Software Engineering Take-Home Project
+# ABA Session Note Generator
 
-### Project Description
+## Approach and Challenge
 
-Visit this link for details:
-[https://harviio.notion.site/Alpaca-Health-Eng-Take-home-Project-1411bfc50b90803382d4cae01f9bcf18?pvs=4](https://www.notion.so/harviio/ABA-Session-Note-Generator-Take-Home-Project-1411bfc50b90803382d4cae01f9bcf18?pvs=4)
+### How to run:
+- Should be relatively simple to run and compile. Will note that there was an issue initially with the fastapi dev main.py so I used uvicorn main:app --reload. 
+- Also used openai migrate.
 
-## Setup Instructions
+### Approach:
+- **Frontend Development:**
+  - Built a React-based frontend using modular components (see src/app/components) to manage the user interface and interactions, including forms, note lists, and real-time updates.
+  - Integrated TailwindCSS for styling to ensure a clean and responsive UI with good readability.
 
-### Backend Setup (Python 3.11+ required)
+- **Backend Development:**
+  - Used FastAPI to handle note generation, updates, deletions, and publishing operations.
 
-```bash
-# Create and activate virtual environment
-python -m venv alpaca_venv
-source alpaca_venv/bin/activate  # or `venv\Scripts\activate` on Windows
+- **State Management:**
+  - Managed the application state using React hooks to track in-progress and completed notes.
 
-# Install dependencies
-pip install -r requirements.txt
+- **Error Handling:**
+  - Included robust error handling mechanisms for API failures, form validations, and user feedback through alerts and status messages.
 
-# Start the server
-fastapi dev main.py
-```
+---
 
-### Frontend Setup (Node.js 18+ required)
+## Design Decisions
 
-```bash
-# Navigate to frontend directory
-cd frontend
+1. **Frontend-Backend Communication:**
+   - Chose RESTful APIs for simplicity and scalability. Each endpoint was clearly defined for operations like note generation, deletion, updates, and publishing.
 
-# Install dependencies
-npm install
+2. **Component-Based Architecture:**
+   - Designed reusable components (`NoteForm`, `NotesList`, `NoteActions`, etc.) to ensure modularity and code reusability.
 
-# Start the development server
-npm run dev
-```
+3. **Styling with TailwindCSS:**
+   - Opted for TailwindCSS to accelerate development and maintain a consistent design language.
 
-The application will be available at:
+4. **State Management with React Hooks:**
+   - Hooks like `useState` were used for state updates to manage notes dynamically without introducing complex state management libraries.
 
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- API Documentation: http://localhost:8000/docs
+---
 
-## Default Project Structure
+## Assumptions
 
-- `frontend/`: Next.js application
-  - `src/components/`: Reusable React components
-  - `src/app/`: Next.js app router pages
-- `backend/`: FastAPI application
-  - `app/main.py`: API endpoints
+1. **Single User Use Case:**
+   - The application assumes that the session notes are handled by one user at a time.
 
-## Development
+2. **Note Content Structure:**
+   - The format of the notes (e.g., `id`, `user_id`, `content`, `date_added`) remains consistent as defined in the API contract.
 
-- Frontend runs on port 3000 with hot reload enabled
-- Backend runs on port 8000 with auto-reload enabled
-- API documentation available at http://localhost:8000/docs
+3. **No Concurrent Editing:**
+   - Assumes no simultaneous edits or conflicts in note updates.
 
-## Submission
+---
 
-1. Create a private GitHub repository
-2. Implement your solution
-3. Document any assumptions or trade-offs
-4. Include instructions for running your solution
-5. Send us the repository link
+## Sources
 
-## Time Expectation
+- **Frameworks and Libraries:**
+  - [React](https://reactjs.org/)
+  - [TailwindCSS](https://tailwindcss.com/)
+  - [FastAPI](https://fastapi.tiangolo.com/)
 
-- Expected time: 3-4 hours
-- Please don't spend more than 6 hours
-
-## Evaluation Criteria
-
-| Category | Details | Weight |
-|----------|---------|--------|
-| Product sense and scoping | - Final product decisions alignment with requirements<br>- Appropriate deprioritization of non-crucial parts | 10% |
-| Technology selection | - Right tools chosen for the job | 10% |
-| Technical Level | - Well-organized and intuitive code structure<br>- Modular code (e.g., React components used)<br>- Proper use of React hooks<br>- Good state management<br>- Correct use of useEffect hooks | 40% |
-| Craft and Quality | - Usable and intuitive UI/UX<br>- Presence and severity of bugs | 20% |
-| Documentation | - Clear communication of logic and technical decisions in README | 10% |
-| Testing | - Presence of tests<br>- Quality and robustness of tests | 10% |
