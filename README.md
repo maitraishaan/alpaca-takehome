@@ -5,6 +5,7 @@
 ### How to run:
 - Should be relatively simple to run and compile. Will note that there was an issue initially with the fastapi dev main.py so I used uvicorn main:app --reload. 
 - Also used openai migrate.
+- Make sure to add your API key in! This is in backend/app/services.py.
 
 ### Approach:
 - **Frontend Development:**
